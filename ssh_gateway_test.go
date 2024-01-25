@@ -1,4 +1,4 @@
-package main
+package ssh_gateway
 
 import (
 	"crypto/rand"
