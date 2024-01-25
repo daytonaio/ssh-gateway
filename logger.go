@@ -1,4 +1,4 @@
-package logger
+package main
 
 type UniversalLogger interface {
 	Debug(...interface{})
