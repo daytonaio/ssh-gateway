@@ -1,0 +1,20 @@
+{
+	"name": "SSH Gateway",
+	"build": {
+		"dockerfile": "./Dockerfile"
+	},
+	"features": {
+		"ghcr.io/devcontainers/features/common-utils:1": {
+		  "installZsh": "true",
+		  "username": "daytona",
+		  "uid": "1000",
+		  "gid": "1000",
+		  "upgradePackages": "false"
+		},
+		"ghcr.io/devcontainers/features/go:1": {}
+	},
+	"containerEnv": {
+		"LOG_LEVEL": "debug"
+	},
+	"remoteUser": "daytona"
+}
