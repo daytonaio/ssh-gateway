@@ -1,4 +1,4 @@
-module daytonaio/ssh-gateway
+module github.com/daytonaio/ssh-gateway
 
 go 1.18
 
