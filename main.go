@@ -7,8 +7,6 @@ import (
 	"strings"
 	"time"
 
-	"ssh-gateway/logger"
-
 	"golang.org/x/crypto/ssh"
 )
 
@@ -21,7 +19,7 @@ type DestSshServer struct {
 type SshGateway struct {
 	destServers map[string](*DestSshServer)
 
-	logger logger.UniversalLogger
+	logger UniversalLogger
 
 	HostKey       ssh.Signer
 	ListenNetwork string
@@ -40,8 +38,8 @@ func (s *SshGateway) Start() error {
 		s.destServers = make(map[string](*DestSshServer))
 	}
 
-	var log logger.UniversalLogger
-	log = logger.NoOpLogger{}
+	var log UniversalLogger
+	log = NoOpLogger{}
 	if s.logger != nil {
 		log = s.logger
 	}
