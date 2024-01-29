@@ -191,9 +191,6 @@ func (s *SshGateway) getServerConfig() *ssh.ServerConfig {
 	var keyboardInteractiveCallback func(conn ssh.ConnMetadata, client ssh.KeyboardInteractiveChallenge) (*ssh.Permissions, error)
 	if s.ValidateKeyboardInteractiveCallback != nil {
 		keyboardInteractiveCallback = func(conn ssh.ConnMetadata, client ssh.KeyboardInteractiveChallenge) (*ssh.Permissions, error) {
-			if s.ValidateKeyboardInteractiveCallback == nil {
-				return nil, fmt.Errorf("keyboard interactive auth not supported")
-			}
 			destServer, err := s.ValidateKeyboardInteractiveCallback(conn.User(), client)
 			if err != nil {
 				return nil, err
@@ -218,9 +215,6 @@ func (s *SshGateway) getServerConfig() *ssh.ServerConfig {
 	var publicKeyCallback func(conn ssh.ConnMetadata, key ssh.PublicKey) (*ssh.Permissions, error)
 	if s.ValidatePublicKeyCallback != nil {
 		publicKeyCallback = func(conn ssh.ConnMetadata, key ssh.PublicKey) (*ssh.Permissions, error) {
-			if s.ValidatePublicKeyCallback == nil {
-				return nil, fmt.Errorf("public key auth not supported")
-			}
 			destServer, err := s.ValidatePublicKeyCallback(conn.User(), key)
 			if err != nil {
 				return nil, err
@@ -234,9 +228,6 @@ func (s *SshGateway) getServerConfig() *ssh.ServerConfig {
 	noClientAuth := false
 	if s.ValidateNoClientAuthCallback != nil {
 		noClientAuthCallback = func(conn ssh.ConnMetadata) (*ssh.Permissions, error) {
-			if s.ValidateNoClientAuthCallback == nil {
-				return nil, fmt.Errorf("noclient auth not supported")
-			}
 			destServer, err := s.ValidateNoClientAuthCallback(conn.User())
 			if err != nil {
 				return nil, err
