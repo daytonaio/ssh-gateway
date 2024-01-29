@@ -168,11 +168,11 @@ func TestMain(t *testing.T) {
 		log.Fatal("Failed to generate RSA key pair")
 	}
 
-	err = os.Remove(SshGatewaySockFile)
+	err = os.RemoveAll(SshGatewaySockFile)
 	if err != nil {
 		panic(err)
 	}
-	err = os.Remove(DestServerSockFile)
+	err = os.RemoveAll(DestServerSockFile)
 	if err != nil {
 		panic(err)
 	}
